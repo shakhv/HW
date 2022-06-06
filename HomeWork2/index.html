@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //assign: evaluation
+            var a = 5;  
+            var b, c;
+
+            b = c = ((a * 5)/2);
+
+        //semicolon: error
+            b = a * 5 ; c / 2 
+            a = 1  ; b = 3
+            c = 10 % 3 ; a + 3
+
+        //semicolon: mistake
+            let a = 4(3+4).toString()
+        ////
+        //Number: age
+            let age = prompt("Сколько Вам лет?");
+            let calculationAge = 2022 - age;
+            alert("Вы родились в суровые времена: " + calculationAge);
+
+        //Number: temperature
+            let temperatureС = prompt("Сколько градусов Цельсия ?");
+            let temperatureF = (temperatureС * 9/5) + 32;
+            alert(temperatureF);
+
+        //Number: divide
+            let calcSum = prompt("Введите число которое хотите поделить : ");
+            let calcDivideNumeric = prompt("На какое число делим?");
+            let result = calcSum / calcDivideNumeric;
+            Math.floor(result)
+
+        //Number: odd
+            let numberOdd = prompt("Введите число:");
+            if (numberOdd == Number(numberOdd)) {
+                true;
+            }else{
+            alert("Меняй на число!");
+            }
+
+        // return (-1) ** num + 1 ? "чётное" : "нечётное";
+
+        // String: greeting
+            let askName = prompt("Как Вас зовут?");
+            alert("Здравствуйте , "+askName)
+
+            //
+        // String: lexics
+            let askText = prompt('Загадка : Чем заканчиваются день и ночь? ');
+
+            if (askText.includes('ь') == true ) {
+                alert("молодец,внимательный)")
+            }else{
+                alert("не тупи , давай еще раз");
+            }
+
+        // confirm
+            window.confirm("Разрешаешь ?")
+                                        //true
+            window.confirm("Разрешаешь ?")
+                                        //false       
+        
+        //Boolean && Boolean: if
+
+            let answerMan = confirm('Вы мужчина?')
+            if (answerMan === true) {
+                alert('Вы мужчина!')
+            }else{
+                var answerWoman = confirm('Так может Вы женщина?')
+                if (answerWoman === true) {
+                alert('Вы женщина!')
+                }else{
+                let answerDog = prompt('Кто ты Воин?')
+                }
+            }
+        //Array : Real
+
+            var homePets = ['Мурашка', 'Муха', 'Милашка','Ричик','Рекс','Мишка',];
+            var newLength = homePets.push('Арчи');
+            var last = homePets.pop();
+            var first = homePets.shift();
+            var pos = homePets.indexOf('Муха');
+
+        // Array: booleans
+            var answerHumans = [answerMan , answerWoman , answerDog];
+
+        // Array: plus
+            var array1 = [15,25,59,30];
+            array1[2] = array1[0] + array1[1];
+            console.log(array1)
+
+        //Array: Plus String
+            var array = ['Hey,','what\'s,','up?'];
+            array[2] = array[0] + array[1] + array[2];
+            console.log(array)
+
+        //Object: real
+            let object {
+                name: "Falcon 9 FT",
+                diameter: "3,7m",
+                weight: "318 tons",
+                length: "70m"
+            };
+            object.name = 'Falcon 9 FT';
+            object['diameter'] = '3,7m';
+            object.weight = "318 tons";
+            object['length'] = "70m";
+
+            
+        //Comparison if     !fixed: заменил '>' на '>=' потому как при вводе возраста 18,30,45,60 выдавало "то ли киборг, то ли KERNESS" , при моем варианте 18 тоже школьник но хотя бы не киборг)
+        var age = +prompt("Сколько вам лет?","");
+            if (age < 0 ){
+                alert("Как пишешь если еще не родился?=)");
+            }else{ 
+                if (age <= 18){
+                alert("школьник");
+            }
+            else{
+                if (age >= 18 && age <= 30){
+                alert("молодеж");
+            }
+            else{ 
+                if (age >= 30 && age <= 45){
+                alert("зрелость");
+            }
+            else{
+                if (age >= 45 && age <= 60){
+                alert("закат");
+            }
+            else{  
+                if (age >= 60){
+                alert("как пенсия?");
+            }
+            else {
+                alert("то ли киборг, то ли KERNESS");  
+                        }
+                    }
+                } 
+            } 
+        } 
+    } //
+
+
+    //Comparison: sizes
+    let resize = alert('Добро пожаловать в сравнительную таблицу размеров одежды и белья! После нажатия ОК цифрой выберите тип одежды :');
+    let choice = prompt(['Выберите тип одежды: \n 1.Верхняя одежда,платья и брюки \n 2.Чулки и носки'])
+    let outerWear = choice.includes('1')
+    let stockingsWear = choice.includes('2')
+    if (outerWear === true) {
+        //out
+        let lastCountryChoice = prompt(['Выберите страну цифрой: \n 1.Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция \n 2.Франция,Швейцария \n 3.Италия \n 4.Великобритания \n 5.США'])
+        let question = prompt(['Укажите Российский размер от 40 до 54:'])
+
+        let BelgiaSize = ['34','36','38','40','42','44','46','48']
+        let FranceSize = ['36','38','40','42','44','46','48','50']
+        let ItalySize =['38','40','42','44','46','48','50','52']
+        let BritishSize =['8','10','12','14','16','18','20','22']
+        let UsaSize =['6','8','10','12','14','16','18','20']
+
+        if (lastCountryChoice.includes(1)=== true){
+            if (question.includes(40)=== true){
+                alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[0]);
+            }
+            if (question.includes(42)=== true) {
+                alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[1]);
+            }
+            if (question.includes(44)=== true) {
+                alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[2]);
+            }
+            if (question.includes(46)=== true) {
+                alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[3]);
+            }
+            if (question.includes(48)=== true) {
+                alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[4]);
+            }
+            if (question.includes(50)=== true) {
+                alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[5]);
+            }
+            if (question.includes(52)=== true) {
+                alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[6]);
+            }
+            if (question.includes(54)=== true) {
+                alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[7]);
+            }
+        } 
+        if (lastCountryChoice.includes(2)=== true){
+            if (question.includes(40)=== true){
+                alert("Франция,Швейцария размер будет : " +FranceSize[0]);
+            }
+            if (question.includes(42)=== true) {
+                alert("Франция,Швейцария размер будет : " +FranceSize[1]);
+            }
+            if (question.includes(44)=== true) {
+                alert("Франция,Швейцария размер будет : " +FranceSize[2]);
+            }
+            if (question.includes(46)=== true) {
+                alert("Франция,Швейцария размер будет : " +FranceSize[3]);
+            }
+            if (question.includes(48)=== true) {
+                alert("Франция,Швейцария размер будет : " +FranceSize[4]);
+            }
+            if (question.includes(50)=== true) {
+                alert("Франция,Швейцария размер будет : " +FranceSize[5]);
+            }
+            if (question.includes(52)=== true) {
+                alert("Франция,Швейцария размер будет : " +FranceSize[6]);
+            }
+            if (question.includes(54)=== true) {
+                alert("Франция,Швейцария размер будет : " +FranceSize[7]);
+            }
+            }
+        if (lastCountryChoice.includes(3)=== true){
+            if (question.includes(40)=== true){
+                alert("В Италии размер будет : " +ItalySize[0]);
+            }
+            if (question.includes(42)=== true) {
+                alert("В Италии размер будет : " +ItalySize[1]);
+            }
+            if (question.includes(44)=== true) {
+                alert("В Италии размер будет : " +ItalySize[2]);
+            }
+            if (question.includes(46)=== true) {
+                alert("В Италии размер будет : " +ItalySize[3]);
+            }
+            if (question.includes(48)=== true) {
+                alert("В Италии размер будет : " +ItalySize[4]);
+            }
+            if (question.includes(50)=== true) {
+                alert("В Италии размер будет : " +ItalySize[5]);
+            }
+            if (question.includes(52)=== true) {
+                alert("В Италии размер будет : " +ItalySize[6]);
+            }
+            if (question.includes(54)=== true) {
+                alert("В Италии размер будет : " +ItalySize[7]);
+            }
+            }
+        if (lastCountryChoice.includes(4)=== true){
+            if (question.includes(40)=== true){
+                alert("Великобритании размер будет : " +BritishSize[0]);
+            }
+            if (question.includes(42)=== true) {
+                alert("Великобритании размер будет : " +BritishSize[1]);
+            }
+            if (question.includes(44)=== true) {
+                alert("Великобритании размер будет : " +BritishSize[2]);
+            }
+            if (question.includes(46)=== true) {
+                alert("Великобритании размер будет : " +BritishSize[3]);
+            }
+            if (question.includes(48)=== true) {
+                alert("Великобритании размер будет : " +BritishSize[4]);
+            }
+            if (question.includes(50)=== true) {
+                alert("Великобритании размер будет : " +BritishSize[5]);
+            }
+            if (question.includes(52)=== true) {
+                alert("Великобритании размер будет : " +BritishSize[6]);
+            }
+            if (question.includes(54)=== true) {
+                alert("Великобритании размер будет : " +BritishSize[7]);
+            }
+            }
+        if (lastCountryChoice.includes(5)=== true){
+            if (question.includes(40)=== true){
+                alert("США размер будет : " +UsaSize[0]);
+            }
+            if (question.includes(42)=== true) {
+                alert("США размер будет : " +UsaSize[1]);
+            }
+            if (question.includes(44)=== true) {
+                alert("США размер будет : " +UsaSize[2]);
+            }
+            if (question.includes(46)=== true) {
+                alert("США размер будет : " +UsaSize[3]);
+            }
+            if (question.includes(48)=== true) {
+                alert("США размер будет : " +UsaSize[4]);
+            }
+            if (question.includes(50)=== true) {
+                alert("США размер будет : " +UsaSize[5]);
+            }
+            if (question.includes(52)=== true) {
+                alert("США размер будет : " +UsaSize[6]);
+            }
+            if (question.includes(54)=== true) {
+                alert("США размер будет : " +UsaSize[7]);
+            }
+            }
+        }
+    if (stockingsWear === true) {
+        let Russia = ['21','23','25','27'];
+        let Europe = ['0','1','2','3','4','5','6'];
+        let UsaBritish = ['8','8 1/2','9','9 1/2','10','10 1/2','11'];
+        let stockingsSize = prompt(['Укажите российский размер чулка/носка (21,23,25,27) :'])
+        if (stockingsSize.includes(21) === true) {
+                alert('В Европе Ваш размер будет: ' + Europe[0] +' или ' + Europe[1] + '\n А в США и Британии: '+ UsaBritish[0] + ' или ' + UsaBritish[1]) 
+        }
+        if (stockingsSize.includes(23) === true) {
+                alert('В Европе Ваш размер будет: ' + Europe[1] +' или ' + Europe[2] + ' или ' + Europe[3] + '\n А в США и Британии: '+ UsaBritish[1] + ' или ' + UsaBritish[2] +' или же '+ UsaBritish[3]) 
+        }
+        if (stockingsSize.includes(25) === true) {
+                alert('В Европе Ваш размер будет: ' + Europe[3] +' или ' + Europe[4] + ' или ' + Europe[5] + '\n А в США и Британии: '+ UsaBritish[3] + ' или ' + UsaBritish[4] +' или же '+ UsaBritish[5]) 
+        }
+        if (stockingsSize.includes(27) === true) {
+                alert('В Европе Ваш размер будет: ' + Europe[6] + '\n А в США и Британии: '+ UsaBritish[6])
+        }
+    }
+    //Ternary 
+    var answerTo = confirm('Полагаю что вы Мужчина . Да или НЕТ?') 
+    answerTo ? alert('Вы мужчина!') : alert('Тогда я уверен что вы женщина!')
+    
+    //Синий пояс Number: flats
+        let appart = prompt('Введите номер квартиры :')
+        let appartOnTheFloor = prompt('Введите колличество квартир на этаже :')
+        let floors = prompt('Введите колличество этажей в доме :')
+
+
+        let appartInEnter = appartOnTheFloor * floors ;
+        
+        let resultEnter = appart /appartInEnter + 1;
+
+        let resultFloor = (((appart % appartInEnter)/appartOnTheFloor + 1)/appartOnTheFloor + 1) + 1;
+
+        alert(Math.floor(resultEnter) + "  подъезд")
+        alert(Math.floor(resultFloor) + "  этаж")
+
+    </script>
+</body>
+</html>
