@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let allHW = prompt("Выберите цифрой какое задание Вас интересует :\n 1.switch: sizes \n 2.switch: if \n 3.prompt: or \n 4.confirm: or this days \n 5.confirm: if this days \n 6.triple prompt \n 7.default: or \n 8.default: if \n 9.login and password \n 10.currency calc \n currency calc: improved  \n currency calc: two rates  \n 11.currency calc: if \n 12.scissors \n 13.Задания на синий пояс \n 14. real data ")
+    switch (allHW) {
+        //switch: sizes
+            case "1" :  let resize = alert('Добро пожаловать в сравнительную таблицу размеров одежды и белья! После нажатия ОК цифрой выберите тип одежды :');
+                                let choice = prompt('Выберите тип одежды : \n 1.Верхняя одежда,платья и брюки \n 2.Чулки и носки');
+                                let BelgiaSize = ['34','36','38','40','42','44','46','48']
+                                let FranceSize = ['36','38','40','42','44','46','48','50']
+                                let ItalySize =['38','40','42','44','46','48','50','52']
+                                let BritishSize =['8','10','12','14','16','18','20','22']
+                                let UsaSize =['6','8','10','12','14','16','18','20']
+
+                                let Russia = ['21','23','25','27'];
+                                let Europe = ['0','1','2','3','4','5','6'];
+                                let UsaBritish = ['8','8 1/2','9','9 1/2','10','10 1/2','11'];
+                                let stockingsSize = prompt(['Укажите российский размер чулка/носка (21,23,25,27) :'])
+
+                        switch (choice) {
+                                case "1" : let lastCountryChoice = prompt('Выберите страну цифрой: \n 1.Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция \n 2.Франция,Швейцария \n 3.Италия \n 4.Великобритания \n 5.США')
+                                    let question = prompt(['Укажите Российский размер от 40 до 54:'])
+                                switch(question){
+                                    case "40" : switch (lastCountryChoice) {
+                                        case "1" :  alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[0]);
+                                        break;
+                                        case "2" :  alert("Франция,Швейцария размер будет : " +FranceSize[0]);
+                                        break;
+                                        case "3" :   alert("В Италии размер будет : " +ItalySize[0]);
+                                        break;
+                                        case "4" :   alert("Великобритании размер будет : " +BritishSize[0]);
+                                        break;
+                                        case "5" :    alert("США размер будет : " +UsaSize[0]);
+                                    }
+                                    break;
+                                    case "42" : switch (lastCountryChoice) {
+                                        case "1" :  alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[1]);
+                                        break;
+                                        case "2" :  alert("Франция,Швейцария размер будет : " +FranceSize[1]);
+                                        break;
+                                        case "3" :   alert("В Италии размер будет : " +ItalySize[1]);
+                                        break;
+                                        case "4" :   alert("Великобритании размер будет : " +BritishSize[1]);
+                                        break;
+                                        case "5" :    alert("США размер будет : " +UsaSize[1]);
+                                    }
+                                    break;
+                                    case "44" : switch (lastCountryChoice) {
+                                        case "1" :  alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[2]);
+                                        break;
+                                        case "2" :  alert("Франция,Швейцария размер будет : " +FranceSize[2]);
+                                        break;
+                                        case "3" :   alert("В Италии размер будет : " +ItalySize[2]);
+                                        break;
+                                        case "4" :   alert("Великобритании размер будет : " +BritishSize[2]);
+                                        break;
+                                        case "5" :    alert("США размер будет : " +UsaSize[2]);
+                                    }
+                                    break;
+                                    case "46" : switch (lastCountryChoice) {
+                                        case "1" :  alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[3]);
+                                        break;
+                                        case "2" :  alert("Франция,Швейцария размер будет : " +FranceSize[3]);
+                                        break;
+                                        case "3" :   alert("В Италии размер будет : " +ItalySize[3]);
+                                        break;
+                                        case "4" :   alert("Великобритании размер будет : " +BritishSize[3]);
+                                        break;
+                                        case "5" :    alert("США размер будет : " +UsaSize[3]);
+                                    }
+                                    break;
+                                    case "48" : switch (lastCountryChoice) {
+                                        case "1" :  alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[4]);
+                                        break;
+                                        case "2" :  alert("Франция,Швейцария размер будет : " +FranceSize[4]);
+                                        break;
+                                        case "3" :   alert("В Италии размер будет : " +ItalySize[4]);
+                                        break;
+                                        case "4" :   alert("Великобритании размер будет : " +BritishSize[4]);
+                                        break;
+                                        case "5" :    alert("США размер будет : " +UsaSize[4]);
+                                    }
+                                    break;
+                                    case "50" : switch (lastCountryChoice) {
+                                        case "1" :  alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[5]);
+                                        break;
+                                        case "2" :  alert("Франция,Швейцария размер будет : " +FranceSize[5]);
+                                        break;
+                                        case "3" :   alert("В Италии размер будет : " +ItalySize[5]);
+                                        break;
+                                        case "4" :   alert("Великобритании размер будет : " +BritishSize[5]);
+                                        break;
+                                        case "5" :    alert("США размер будет : " +UsaSize[5]);
+                                    }
+                                    break;
+                                    case "52" : switch (lastCountryChoice) {
+                                        case "1" :  alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[6]);
+                                        break;
+                                        case "2" :  alert("Франция,Швейцария размер будет : " +FranceSize[6]);
+                                        break;
+                                        case "3" :   alert("В Италии размер будет : " +ItalySize[6]);
+                                        break;
+                                        case "4" :   alert("Великобритании размер будет : " +BritishSize[6]);
+                                        break;
+                                        case "5" :    alert("США размер будет : " +UsaSize[6]);
+                                    }
+                                    break;
+                                    case "54" : switch (lastCountryChoice) {
+                                        case "1" :  alert("Бельгия,Германия,Нидерланды,Норвегия,Финляндия,Швеция размер будет : " +BelgiaSize[7]);
+                                        break;
+                                        case "2" :  alert("Франция,Швейцария размер будет : " +FranceSize[7]);
+                                        break;
+                                        case "3" :   alert("В Италии размер будет : " +ItalySize[7]);
+                                        break;
+                                        case "4" :   alert("Великобритании размер будет : " +BritishSize[7]);
+                                        break;
+                                        case "5" :    alert("США размер будет : " +UsaSize[7]);
+                                    }
+                                    break;
+                                    case "2" : switch (stockingsSize) {
+                                        case "21" : alert('В Европе Ваш размер будет: ' + Europe[0] +' или ' + Europe[1] + '\n А в США и Британии: '+ UsaBritish[0] + ' или ' + UsaBritish[1])
+                                        break;
+                                        case "23" :  alert('В Европе Ваш размер будет: ' + Europe[1] +' или ' + Europe[2] + ' или ' + Europe[3] + '\n А в США и Британии: '+ UsaBritish[1] + ' или ' + UsaBritish[2] +' или же '+ UsaBritish[3]) 
+                                        break;
+                                        case "25" : alert('В Европе Ваш размер будет: ' + Europe[3] +' или ' + Europe[4] + ' или ' + Europe[5] + '\n А в США и Британии: '+ UsaBritish[3] + ' или ' + UsaBritish[4] +' или же '+ UsaBritish[5]) 
+                                        break;
+                                        case "27" :  alert('В Европе Ваш размер будет: ' + Europe[6] + '\n А в США и Британии: '+ UsaBritish[6])
+                                        break;
+                                    }
+
+                                }
+                                    
+                            break;}
+            break;
+            //switch: if
+            case "2" :   let color = prompt(["Выберите цвет цифрой: 1.red , 2.black , 3.blue , 4.green "])
+                            if (color){
+                                if (color.includes(1)) {
+
+                                    document.write("<div style='background-color: red;'>красный</div>");
+                                }
+                                if  (color.includes(2)) {
+
+                                    document.write("<div style='background-color: black; color: white;'>черный</div>");
+                                } 
+                                if (color.includes(3)) {
+                                    document.write("<div style='background-color: blue;'>синий</div>");
+                                }
+                                if (color.includes(4)) {
+                                    document.write("<div style='background-color: green;'>зеленый</div>");
+                                }
+                            }
+            break;
+            //prompt: or
+            case "3" :  let age = prompt("Сколько Вам лет?") || alert("Error")
+                            if (age){
+                                let totalAge = 2022 - age;
+                                alert(totalAge)
+                            }
+            break; 
+            //confirm: or this days
+            case "4" : let robotQuestion = confirm("Шопинг?") || alert("Ты бяка")
+            break;
+            // confirm: if this days
+            case "5" : let robotQuestionIF = confirm("Шопинг?")
+                            if (!robotQuestionIF) {
+                                alert("Ты бяка")
+                            }
+            break;
+            //triple prompt
+            case "6" : let fullName = prompt("Фамилия") + prompt("Имя") + prompt("Отчество")
+                     alert("" + fullName)
+            break;
+
+            //default: or
+            case "7" :     let surName = prompt('Фамилия') || "Иванченко"
+                           let name = prompt("Имя") || "Иван"
+                           let fatherName = prompt("Отчество") || "Иванович"
+                       alert(surName + name + fatherName)
+            break;
+            //default: if
+            case "8" :  let surNameSecond = prompt('Фамилия') 
+                            if (!surNameSecond){
+                                surNameSecond = "Иванченко"} 
+                            let nameSecond = prompt("Имя") 
+                            if (!nameSecond) { 
+                                nameSecond = "Иван"} 
+                            let fatherNameSecond = prompt("Отчество")  
+                            if (!fatherNameSecond){
+                                fatherNameSecond = "Иванович"}
+                            alert(surNameSecond + nameSecond + fatherNameSecond)
+            break;
+              //login and password 
+            case "9" :    let askLogin = prompt(["Введите Ваш логин:"]) 
+                                if (askLogin == ["login"]) {
+                                    let askPassword = prompt(['Введите пароль :'])
+                                    if (askPassword == ["qwerty"]) {
+                                        alert('Успешная авторизация!')
+                                    }else{
+                                        alert('ERROR!Повторите попытку!')
+                                    }
+                                }else{
+                                    alert('ERROR!Повторите попытку!')
+                                }
+            break;
+            //currency calc   +   //currency calc: improved + //currency calc: two rates
+            case "10" :  let selectСurrency = prompt("Выберите валюту : usd или eur ")
+                            let str = selectСurrency.toLowerCase() //currency calc: improved
+                            switch (str) { //currency calc: two rates
+                                case "usd" : let rateUsd = confirm("Нажмите ОК если продаете , или ОТМЕНА если хотите купить ... ") ? prompt("Введите сумму для продажи в гривне : ") / 35.10 : prompt("Введите сумму для покупки в гривне : ") / 35.30
+                            
+                                alert("В долларах будет : " + rateUsd)
+                                break;
+                                case "eur" : let rateEur = confirm("Нажмите ОК если продаете , или ОТМЕНА если хотите купить ... ") ? prompt("Введите сумму для продажи в гривне : ") / 37.35 : prompt("Введите сумму для покупки в гривне : ") / 37.70
+                                alert("В евро будет : " + rateEur)
+                            }
+            break;
+         // currency calc: if
+            case "11" :    let selectСurrencySecond = prompt(["Выберите валюту : usd или eur "])
+                            let strSecond = selectСurrency.toLowerCase() 
+                            if (selectСurrencySecond.includes("usd")) {
+                                let rateUsd = confirm("Нажмите ОК если продаете , или ОТМЕНА если хотите купить ... ")
+                                if (rateUsd) {
+                                let resultUsdSell = prompt("Введите сумму для продажи в гривне : ") / 35.10
+                                alert(resultUsdSell)
+                                }else {
+                                let resultUsdBuy = prompt("Введите сумму для покупки в гривне : ") / 35.30
+                                alert(resultUsdBuy)
+                                }
+                            }
+                            if (selectСurrencySecond.includes("eur")) {
+                                let rateEur = confirm("Нажмите ОК если продаете , или ОТМЕНА если хотите купить ... ")
+                                if (rateUsd) {
+                                let resultEurSell = prompt("Введите сумму для продажи в гривне : ") / 37.35
+                                alert(resultEurSell)
+                                }else {
+                                let resultEurBuy = prompt("Введите сумму для покупки в гривне : ") / 37.70
+                                alert(resultEurBuy)
+                                }
+                            }       
+            break;
+             //scissors
+             case "12" :   let userChoise = prompt('Введите один из вариантов\n1. камень \n2. ножницы\n3. бумага');
+                                let stone = 0;
+                                let scissors = 1;
+                                let paper = 2;
+                                let compRandom = Math.floor(Math.random() * 3);
+
+                                console.log(compRandom)
+                                switch(userChoise) {
+                                    case '1' : switch (compRandom) {
+                                        case stone : alert("Робот выбрал : камень")
+                                        alert("ничья")
+                                        break;
+                                        case scissors : alert("Робот выбрал : ножницы")
+                                        alert("ты выиграл!")
+                                        break;
+                                        case paper : alert("Робот выбрал : бумагу")
+                                        alert("ты проиграл!")
+                                        break;
+                                    }
+                                    
+                                    break;
+                                    case '2' : switch (compRandom) {
+                                        case stone : alert("Робот выбрал : камень")
+                                        alert("ты проиграл!")
+                                        break;
+                                        case scissors : alert("Робот выбрал : ножницы")
+                                        alert("ничья")
+                                        break;
+                                        case paper : alert("Робот выбрал : бумагу")
+                                        alert("ты выиграл!")
+                                        break;
+                                    }
+                                    break;
+                                    case '3' : switch (compRandom) {
+                                        case stone : alert("Робот выбрал : камень")
+                                        alert("ты выиграл!")
+                                        break;
+                                        case scissors : alert("Робот выбрал : ножницы")
+                                        alert("ты проиграл!")
+                                        break;
+                                        case paper : alert("Робот выбрал : бумагу")
+                                        alert("ничья")
+                                        break;
+                                    }
+                                }
+            break;
+            //Задание на синий пояс
+            case "13" :   let selectСurrencyThird = prompt(["Выберите валюту : usd или eur "])
+                                let strThird = selectСurrency.toLowerCase() 
+                                let ratios = {
+                                    usd : [35.10, 35.30],
+                                    eur: [37.35, 37.70]
+                                }
+                                switch (strThird) {
+                                    case 'usd' : let rateUsd = confirm("Нажмите ОК если продаете , или ОТМЕНА если хотите купить ... ") ? prompt("Введите сумму для продажи в гривне : ") / ratios.usd[0] : prompt("Введите сумму для покупки в гривне : ") / ratios.usd[1]
+                                    alert("В долларах будет : " + rateUsd)
+                                    break;
+                                    case 'eur' : let rateEur = confirm("Нажмите ОК если продаете , или ОТМЕНА если хотите купить ... ") ? prompt("Введите сумму для продажи в гривне : ") / ratios.eur[0] : prompt("Введите сумму для покупки в гривне : ") / ratios.eur[1]
+                                    alert("В евро будет : " + rateEur)
+                                }
+            break;
+            // real data
+            case "14" : fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
+                            .then(data => {
+                                let userEnter = prompt("Выберите : \n 1.Продаю \n 2.Покупаю  ") 
+                                let result = userEnter.includes(1) ? prompt("Введите сумму для продажи в гривне : ") / data.rates.UAH : prompt("Введите сумму для ПОКУПКИ в гривне : ") / (data.rates.UAH
+                                + 0.30) // нету второго значения , добавил спрет 30 коп 
+                                alert(result)
+                            })
+            break;
+         }
+          
+
+    
+        
+    
+
+      
+
+        
+       
+
+
+
+
+   
+
+        
+
+        
+</body>
+</html>
