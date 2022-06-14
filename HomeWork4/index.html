@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //html tree
+        let body = {
+            tagName : 'body',
+            subTags : [
+                {
+                    tagName : 'div',
+                    subTags : [
+                        {
+                            tagName : 'span',
+                            text: 'Enter a data please:'
+                        },
+                        {
+                            tagName : 'input',
+                            attrs : {
+                                type : 'text',
+                                id : 'id'
+                            }
+                        },
+                        {
+                            tagName : 'input',
+                            attrs : {
+                                type : 'text',
+                                id : 'surname'
+                            }
+                        }
+                    ]
+                },
+                {
+                    tagName : 'div',
+                    subTags : [
+                        {
+                            tagName : 'button',
+                            text : 'OK' ,
+                            attrs : {
+                                id : 'ok'
+                            }
+                        },
+                        {
+                            tagName : 'button' ,
+                            text : 'Cancel',
+                            attrs : {
+                                id : 'cancel'
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+        body.subTags[1].subTags[1]
+        body.subTags[0].subTags[2].attrs.id
+
+        //declarative fields
+        var notebook = {
+            brand: prompt("Введите название бренда :"),
+            type:  prompt("Введите серию :"),
+            model: prompt("Введите модель :"),
+            ram: confirm("Память 4 gb ?"),
+            size: prompt("Введите размер:"),
+            weight: confirm("Вес 1.8 ?"),
+            resolution: {
+                width:confirm("Ширина экрана 1920 ?"),
+                height: confirm("Высота 1080 ?"),
+            },
+            owner : {}
+        };
+
+        var phone = {
+            brand: prompt("Введите название бренда:"),
+            model: prompt("Введите модель:"),
+            ram:  confirm("Память 2 gb ?"),
+            color: prompt("Введите цвет :"),
+            owner : {}
+        };
+
+        var person = {
+            name: prompt("Введите ваше имя:"),
+            surname: prompt("Введите вашу фамилию:"),
+            married:  confirm("Вы женаты/замужем ? "),
+            smartphone: {},
+            laptop:{}
+        }
+        //object links
+        person.smartphone = phone
+        person.laptop = notebook
+        notebook.owner = person
+        phone.owner = person
+        // person.smartphone.owner.laptop.owner.smartphone == person.smartphone
+
+        // imperative array fill 3
+        let imperatArray = []
+        for (let i = 0; i < 3; i++) {
+            imperatArray.push(prompt('Введите числа:'))
+        }
+        console.log(imperatArray)
+ 
+        // while confirm
+        let askUser = confirm('Нажмите ОТМЕНА чтобы выйти отсюда ...')
+        while (askUser != true) {
+            askUser = confirm('Нажмите ОТМЕНА чтобы выйти отсюда ...')
+        }
+
+        //array fill
+        let elements = []
+        while (true) {
+            let quesUser = prompt("Введите число :")
+            elements.push(quesUser)
+            if (!quesUser) {
+                break;
+            }
+        }
+
+        //array fill nopush
+        let elementsSecond = []
+        while (true) {
+            var quesUserSecond = prompt(["Введите число :"])
+            if (elementsSecond[quesUserSecond]){
+                elementsSecond[quesUserSecond]++;
+            }else {
+                elementsSecond[quesUserSecond] = 1;
+            }
+            if (!quesUserSecond) {
+                break;
+            }
+        }
+        
+        //infinite probability
+        while(true) {
+                var infiniteProb = Math.random();
+                alert(infiniteProb);
+        if (infiniteProb > 0.9) {
+                break;
+            }
+        }
+
+        //empty loop
+        do {
+        } while (prompt("Нажмите отмена") == null);
+
+        //progression sum
+        let d = 3;
+        let n = 150;
+        for (let a1 = 1; 1 + d < n ; a1++) {
+            let an = a1 + d * (n-1)
+            let sn = ((a1 + an) * n)/2
+           
+            console.log("Последний член an : " + an)
+            console.log("Сумма арифметической прогрессии Sn : " + sn)
+            break;
+        }
+
+        // chess one line
+        let grid = "#";
+        for (let i = 0; i < 9 ;i++) {
+            if (i % 2) {
+                grid = grid + "#";
+            }else {
+                grid = grid + " ";
+            }
+        } console.log (grid);
+
+        //numbers
+        let str = '';
+        for ( let j = 0; j <= 9 ; j++){
+                for (let i = 0; i <= 9; i++) {
+                    str = str + i;
+                if (i == 9) {
+                    str = str + '\n'
+                }
+            }
+            if (j == 9) {
+                console.log(str)  
+                break;
+            }
+        }
+     
+        //chess
+        let chess = "";
+        for (let i = 0;i <= 10; i++){
+                chess += '\n'
+                for (let j = 0; j <= 6; j++){
+                    if (i % 2 === 0 && j === 0) {
+                        chess += "#"
+                    }else chess += ".#"
+                }
+        }
+        console.log(chess)
+      
+        //cubes
+        for (let cub = [];;) {
+            let index = cub.length
+            for (let i = 0; i < 1;i++) {
+                let result = index ** 3
+                cub.push(result)
+            }
+            if (cub.length == 10){
+                console.log(cub)
+                break;
+            }
+        }
+       
+        //multiply table
+        let arr = [];
+        for(let i = 0; i <= 10; i++) {
+            let table = []
+            arr.push(table)
+            for(let j = 0; j <= 10; j++) {
+                table.push(j * i)
+            }
+        }
+
+
+        // matrix to html table
+        let str = '<table border = "1">';
+        for(let i = 0; i <= 0; i++) {
+            str += '<tr> <td> FIRST </td>'
+            for(let j = 0; j <= 0; j++) {
+                str += '<td> SECOND </td> </tr>'
+            }
+        }
+        str += "</table>"
+        document.write(str)
+
+        //Задание на синий пояс: Треугольник
+        let triangle = "";
+        for (let i = 0; i <= 10 ; i++){
+            triangle += '\n'
+            for (let j = 0; j <= 11; j++) {
+                triangle += '.' + '#'
+            }
+        }
+
+    
+            
+
+
+    </script>
+</body>
+</html>
