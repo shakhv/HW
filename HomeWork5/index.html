@@ -8,7 +8,129 @@
 </head>
 <body>
     <script>
+        //3 persons
+        let a = new Object();
+        a.name = 'Petro'
+        a.surname = 'Petroff'
+
+        let b = new Object();
+        b.name = 'Igor'
+        b.surname = 'Igoroff'
+
+        let c = new Object();
+        c.name = 'Anton'
+        c.surname = 'Antonoff'
+
+        //different fields
+        a.age = 15;
+        a.fatherName = "Petrovich"
+
+        b.car = 'Maseratti'
+        b.sex = 'man'
+
+        c.nationallity = 'tatarin'
+        c.laptop = 'macbook'
+
+        //fields check
+        if ('fatherName' in a ) {
+            alert(a.fatherName)
+       
+        }
+        if ('sex' in b){
+            alert(b.sex)
+  
+        }
+        if ('laptop' in c) {
+            alert(c.laptop)
+
+        }
+
+        //array of persons
+        let persons = [];
+        persons.push(a)
+        persons.push(b)
+        persons.push(c)
+        persons.push({name : 'Archi' , surname: 'Archibalt' , sex : 'pet'})
+      
+       
+        //loop of persons
+        for (let i = 0; i < persons.length; i++) {
+	    console.log(persons[i]);
+        }
+
+        //loop of name and surname
+        for (let i = 0; i < persons.length; i++) {
+	    console.log(persons[i].name + " " + persons[i].surname);
+        }
+
+        //loop of loop of values
+        for (let i = 0; i < persons.length; i++) {
+            for (let value of Object.values(persons[i])) {
+                console.log(value); 
+            }
+        }
+
+        //fullName
+        for (let object of persons){
+            if (object.name && object.surname){
+                object.fullName = object.name + " " + object.surname
+            }
+        }
+
+        //serialize
+        JSON.stringify(persons)
+
+        //deserialize 
+        let d = '{"name" : "Artur","surname" : "Arturenko" , "fatherName": "Arturovich","age" : 34,"sex":"female"}'
+        d = JSON.parse(d)
+        persons[3] = d
+        console.log(persons)
+
+        //html
+        var str = "<table border='1'>"
+        for (let i = 0;i < 4;i++){
+            for (let key in persons[i]) {
+                    str += `<tr><td>${[key]}</td><td>${persons[i][key]}</td></tr>`;
+                 }
+        }
+        str += "</table>"
+        console.log(str)
+        document.write(str)
+
+        //HTML optional fields  ++++++  //HTML tr color
+        var str = "<table border='1'>"
+        for (let i = 0;i < persons.length;i++){
+            for (let key in persons[i]) {
+                str += `<tr style="color:#ff0000"><td>${[key]}</td><td>${persons[i][key]}</td></tr>`;
+                }
+        }
+        str += "</table>"
+        console.log(str)
+        document.write(str)
+
+        //destruct array
+        let arr = [1,2,3,4,5, "a", "b","c"]
+        let [odd1 , even1 , odd2 , even2 , odd3 , ...letters] = arr
+
+        //destruct string
+        let arr2 = [1, "abc"]
+        let [number, [s1, s2, s3]] = arr2
+
         
+        // destruct 2
+        let obj = {name: 'Ivan',
+           surname: 'Petrov',
+           children: [{name: 'Maria'}, {name: 'Nikolay'}]
+        }
+        let {
+                children: [{ name: name1 }, { name: name2 }],
+            } = obj;
+
+        // destruct 3 
+        let arr3 = [1,2,3,4, 5,6,7,10]
+        let [a ,b , {length = arr3.length}] = arr
+
+
     </script>
 </body>
 </html>
