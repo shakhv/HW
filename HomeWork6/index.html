@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //a
+        function a(){
+            alert("Привет");
+        }
+
+        //cube 
+        var cube = a => a ** 3
+
+        //avg2
+        var avg2 = (a , b) => (a + b)/2;
+
+
+        //sum3
+        function sum3(a = 0, b = 0, c = 0) {
+                let sums = a + b + c;
+                return sums;
+        }
+        
+       //intRandom
+       function intRandom(a = 0, b = 0) {
+                let random = Math.random() * (b - a) + a;
+                return Math.floor(random);
+            }
+
+        //greetAll
+        function greetAll(){
+            for (var i = 0;i < arguments.length;i++){
+               arr = alert('Hi ,' + arguments[i])
+            }
+        }
+       
+        //sum
+        function sum(array){
+            var a = 0;
+            for (let i = 0; i < arguments.length;i++){
+               a += arguments[i]
+            }
+            return a;
+        }
+
+        //UNION
+        function aSample(){
+            console.log(a())
+        }
+        function cubeSample(){
+            console.log(cube(5))
+        }
+        function avg2Sample(){
+            console.log(avg2(20,50))
+        }
+        function sum3Sample(){
+            console.log(sum3(5,10))
+        }
+        function intRandomSample(){
+            console.log(intRandom(2,15))
+        }
+        function greetAllSample(){
+            console.log(greetAll("Spiderman","Superman"))
+        }
+        function sumSample(){
+            console.log(sum(20,40,60,80,100))
+        }
+
+        // var sample = prompt("Введите название задания")
+        // switch (sample.toLowerCase()){
+        //     case "a": aSample()
+        //             break
+        //     case "cube": cubeSample();
+        //             break
+        //     case "avg2": avg2Sample();
+        //             break
+        //     case "sum3": sum3Sample();
+        //             break
+        //     case "intrandom": intRandomSample();
+        //             break
+        //     case "greetall": greetAllSample("Superman","SpiderMan")
+        //             break
+        //     case "sum":sumSample();
+        //             break
+        // }
+
+        //UNION declarative
+        let union = {
+                a(){
+                    console.log(a())
+                },
+                cube(){
+                    console.log(cube(5))
+                },
+                avg2(){
+                    console.log(avg2(20,50))
+                },
+                sum3(){
+                    console.log(sum3(5,10))
+                },
+                intRandom(){
+                    console.log(intRandom(2,15))
+                },
+                greetAll(){
+                    console.log(greetAll("Spiderman","Superman"))
+                },
+                sum(){
+                    console.log(sum(20,40,60,80,100))
+                },
+            };
+            console.log(union[prompt("Введите название задания")]());
+    </script>
+    
+</body>
+</html>
