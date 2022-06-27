@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//ES6 done hw7
+
+//sort
+            var persons = [
+                    {name: "Иван", age: 17},
+                    {name: "Мария", age: 35},
+                    {name: "Алексей", age: 73},
+                    {name: "Яков", age: 12},
+            ]
+
+            function sort(array, keys, boolean){
+                    array.sort(sorting)   
+                function sorting(a, b){
+                            return (boolean) ? (a[keys] < b[keys]) : (b[keys] < a[keys]);
+            }
+                return array;
+            }
+
+            console.log(sort(persons, "age"));
+            // console.log(sort(persons, "name", false));
+            // console.log(sort(persons, "age",true));
+
+
+
+//array map
+            var array = ["1", {}, null, undefined, "500", 700]
+            var result  = array.map(function(item) {
+                var number = parseInt(item);
+                return isNaN(number)? item : number;
+            });
+
+            console.log(result);
+//array reduce
+            var arr = ["0", 5, 3, "string", null]
+            function reducing(total, i){
+                if (!isNaN(i) && i != 0  && isFinite(i) && i != null){
+                return total*=i
+                }
+                return total;
+            };
+            var result2 = arr.reduce(reducing, 1)
+
+            console.log( result2 )
+
+//object filter 
+        var phone = {
+                brand: "meizu",
+                model: "m2",
+                ram: 2,
+                color: "black",
+        };
+
+ console.log(filter(phone,(key,value) => key == "color" || value == 2));
+
+ 
+        function filter(object ,key , value){
+            var result = {};
+            for(var key in object){
+                for(var value in object){
+                    if(object[key] == 2) result[key] = object[key];
+                    if(value == "color") result[value] = object[value];
+                }
+            }
+            return result;
+        }
+
+
+
+
+
+//object map 
+               map({name: "Иван", age: 17},function(key,value){
+                var result = {};
+                result[key+"_"] = value + "$";                                             
+                return result;                                   
+            }) 
+            //должен вернуть {name_: "Иван$", age_:"17$"}                                   
+            function map(object, funct){                                   
+                for(key in object){
+                funct(object, key, object[key]);
+                    delete object[key];
+            }
+                return object;
+            }
+
+            function check(object, key, value){
+                object[key + "_"] = value + "$";
+                return object;
+            }
+
+            console.log(map({name: "Иван", age: 17}, check)) 
+
+
+//Рекурсия +++++++++++
+        function recurse(min , step , max){
+            if (max <= 0) return 0;
+            return min + recurse(min + step, step ,max -1)
+        }
+
+        console.log(recurse(5,10,15) + " = Сумма арифметической прогрессии Sn")
+
+
+
+    </script>
+    
+</body>
+</html>

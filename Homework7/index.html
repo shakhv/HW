@@ -50,20 +50,18 @@
           table.onmouseover = (event) => light(event, 'silver');
           table.onmouseout = (event) => light(event, '');  
 
-
     //Calc
         const numberOne = document.getElementById('firstNum')
         const numberSecond = document.getElementById('secondNum')
-    calc.onclick = function(){
-        var result = document.getElementById('result')
-      } 
-      
+
+    calc.onclick = (result) =>  document.getElementById('result')
+    
     //Calc Live
-    function calc() {
-      result.value = ((+numberOne.value) * (+numberSecond.value)) 
-    }
+    calc = () => result.value = ((+numberOne.value) * (+numberSecond.value)) 
+    
         numberOne.oninput = calc
         numberSecond.oninput = calc
+        
 </script>
     
 </body>

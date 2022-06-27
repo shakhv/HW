@@ -46,7 +46,7 @@
         }
 
         //array of persons
-        let persons = [];
+        var persons = [];
         persons.push(a)
         persons.push(b)
         persons.push(c)
@@ -87,26 +87,27 @@
         console.log(persons)
 
         //html
-        var str = "<table border='1'>"
-        for (let i = 0;i < 4;i++){
-            for (let key in persons[i]) {
-                    str += `<tr><td>${[key]}</td><td>${persons[i][key]}</td></tr>`;
-                 }
+        let str = '<table border = "1">'
+        for (let key in persons) {
+            str +=
+                `<tr> <td> name </td> <td> ${persons[key].name} </td> <td> surname </td> <td> ${persons[key].surname} </td> </tr> \n`;
         }
         str += "</table>"
+
         console.log(str)
         document.write(str)
 
         //HTML optional fields  ++++++  //HTML tr color
-        var str = "<table border='1'>"
-        for (let i = 0;i < persons.length;i++){
-            for (let key in persons[i]) {
-                str += `<tr style="color:#ff0000"><td>${[key]}</td><td>${persons[i][key]}</td></tr>`;
-                }
+        let str2 = '<table border = "1">'
+        for (let keys of persons){
+             str2 +=
+                `<tr> <td> ${keys} </td> <td> </td></tr> \n`;
         }
-        str += "</table>"
-        console.log(str)
-        document.write(str)
+           
+        str2 += "</table>"
+
+        console.log(str2)
+        document.write(str2)
 
         //destruct array
         let arr = [1,2,3,4,5, "a", "b","c"]
@@ -126,9 +127,9 @@
                 children: [{ name: name1 }, { name: name2 }],
             } = obj;
 
-        // destruct 3 
-        let arr3 = [1,2,3,4, 5,6,7,10]
-        let [a ,b , {length = arr3.length}] = arr
+        //destruct 3 
+        // let arr3 = [1,2,3,4, 5,6,7,10]
+        // let [a ,b , {length = arr3.length}] = arr
 
 
     </script>
