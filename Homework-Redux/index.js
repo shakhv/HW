@@ -1,6 +1,6 @@
 
-function reducer(state, {type, ШО, СКОКА }){ //объект action деструктуризируется на три переменных
-    if (!state){ //начальная уборка в ларьке:
+function reducer(state, {type, ШО, СКОКА }){ 
+    if (!state){ 
         return {
             пиво: {storage : 100 , price: 65},
             чипсы: {storage: 145 , price: 120},
@@ -38,7 +38,7 @@ function reducer(state, {type, ШО, СКОКА }){ //объект action дес
         }
     }
    
-    return state //если мы не поняли, что от нас просят в `action` - оставляем все как есть
+    return state 
 }
 
 const store = createStore(reducer)
@@ -73,19 +73,14 @@ for(let [key, value] of Object.entries(store.getState())){
         let sklad = document.createElement('div')
             sklad.style.backgroundColor = 'silver'
             sklad.style.display = 'flex'
-        
         let btn1 = document.createElement('div')
         let buy = document.getElementById('buy')
         stock.append(sklad)
-        // document.body.append(sklad)
         text.append(btn1)
         div.append(btn)
-
-
-    console.log(key,value)
     btn.id = 'product'
-    
     btn.innerHTML = `${key} (${value.price + "грн"})`
+
 
     btn.onclick = () => {
         store.dispatch({type: 'КУПИТЬ', ШО: key, СКОКА: 1})
@@ -93,11 +88,10 @@ for(let [key, value] of Object.entries(store.getState())){
         console.log(store.getState())
     }
      
-    buy.onclick = () => {
 
+    buy.onclick = () => {
     let div = document.createElement('div')
     let content = document.getElementById('buy_content')
-    
     var allMoney = `${store.getState().касса}`
     var result = Number(allMoney) 
     moneyStorage.push(result)
@@ -106,16 +100,12 @@ for(let [key, value] of Object.entries(store.getState())){
 
     content.append(div)
        div.innerHTML = `Транзакция ${Date()}: ${store.getState().касса} грн`
-    
        store.dispatch({type: 'ТРАНЗАКЦИЯ', ШО: 'касса', СКОКА: 0})
        store.dispatch({type: 'КАССА', ШО: 'касса', СКОКА: 0})
         console.log(store.getState())
     }
-
    store.subscribe(()=> sklad.innerHTML = '/' + ` ${key} ${value.storage} шт.` + ' ' );
-
     let moneyStorage = []
-
     function arraySum(array){
         var money = document.getElementById('total')
 
