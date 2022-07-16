@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Другой тайтл ПРИВЕТ 17й</title>
+    </head>
+    <style>
+        .wrapper{
+            display: flex;
+            justify-content: space-between;
+            background-color: silver;
+        }
+        .content{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        #stock{
+            display: flex;
+            font-size: 20px;
+        }
+        #product{
+            margin: 0.2%;
+            padding: 50px;
+            font-size: 15px;
+        }
+        .text{
+            display: flex;
+        }
+
+        #product:last-child{
+            display: none;
+        }
+        #buy{
+            margin: 20px;
+            padding: 20px 50px;
+        }
+        #total{
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+            margin-top: 1%;
+            color: red;
+        }
+    </style>
+    <body> 
+        <div class="wrapper">
+            <h1>Laryok Keeper</h1>
+            <button id="total">КАСА</button>
+        </div>
+        
+        
+        <div class="content" id = 'content'>
+        </div>
+
+        <div class="text" id="text">
+
+        </div>
+
+        <h1>Наявність: </h1>
+        <div class="stock_box" id="stock"></div>
+
+        <div class="buy_content" id="buy_content">
+            
+            <button class="button" id="buy">СПЛАТИТИ</button>
+        </div>
+        
+        
+
+        <script src='index.js'></script>
+    </body>
+</html>

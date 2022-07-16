@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+//Password
+        // function Password(parent, open){
+        //     //const value = ''
+        //     const pass = document.createElement('input')
+        //     const check = document.createElement('input')
+        //     check.type = 'checkbox'
+        //     parent.append(pass , check)
+
+        //     check.onchange = () => {
+        //         this.setOpen(check.checked)
+        //     }
+
+        //     pass.oninput = () => {
+        //         this.value = pass.value;
+        //         if(typeof this.onchange === 'function'){
+        //             this.onchange(this.value)
+        //         }
+        //     }
+
+        //     this.getValue = function () {
+        //         return this.value
+        //     }
+
+        //     this.setValue = function(value){
+        //         this.value = value;
+        //         pass.value = this.value
+        //     }
+            
+        //     this.setOpen = function (newOpen) {
+        //         open = newOpen
+        //         pass.type = open ? 'text' : 'password'
+        //         check.checked = open
+
+        //         if(typeof this.onOpenChange === 'function') {
+        //         this.onOpenChange(open)
+        //         }
+        //     }
+
+        //     this.getOpen = function () {
+        //         return open 
+        //     }
+
+        //     this.setOpen(open)
+
+        // }
+
+        // let p = new Password(document.body, false)
+
+        // p.onChange = data => console.log(data)
+        // p.onOpenChange = open => console.log(open)
+
+        // p.setValue('qwerty')
+        // console.log(p.getValue())
+
+        // // p.setOpen(false)
+        // console.log(p.getOpen())
+
+
+//LoginForm
+    //    function LoginForm(parent, open){
+    //         const formBody = document.createElement('div')
+    //         const pass = document.createElement('input')
+    //         const login = document.createElement('input')
+    //         const check = document.createElement('input')
+    //         const btn = document.createElement('button')
+
+    //         check.type = 'checkbox'
+    //         login.type = 'text'
+    //         btn.innerHTML = 'submit'
+    //         parent.append(formBody)
+    //         formBody.append(login , pass , check , btn)
+
+    //         check.onchange = () => {
+    //             this.setOpen(check.checked)
+    //         }
+
+    //         pass.oninput = () => {
+    //             this.value = pass.value;
+    //             btn.disabled = checkInputs();
+    //             if(typeof this.onchange === 'function'){
+    //                 this.onchange(this.value)
+    //             }
+    //         }
+    //         this.setLoginValue = (value) => {
+    //             this.loginValue = value
+    //             login.value = this.loginValue
+    //         }
+    //         this.getLoginValue = () => {
+    //             return this.loginValue
+    //         }
+
+    //         const checkInputs = () => {
+    //             if(login.value.length === 0 ||  this.value.length === 0 ) {
+    //                 return true;
+    //             }
+    //             return false;
+    //         }
+
+    //         this.getValue = function () {
+    //             return this.value
+    //         }
+
+    //         this.setValue = function(value){
+    //             this.value = value;
+    //             pass.value = this.value
+    //         }
+            
+    //         this.setOpen = function (newOpen) {
+    //             open = newOpen
+    //             pass.type = open ? 'text' : 'password'
+    //             check.checked = open
+
+    //             if(typeof this.onOpenChange === 'function') {
+    //             this.onOpenChange(open)
+    //             }
+    //         }
+
+    //         this.getOpen = function () {
+    //             return open 
+    //         }
+
+    //         this.setOpen(open)
+
+    //         btn.disabled = checkInputs();
+    //     }
+
+    //     let lf = new LoginForm(document.body, false)
+
+    //     lf.onChange = data => console.log(data)
+    //     lf.onOpenChange = open => console.log(open)
+
+    //     lf.setValue('qwerty')
+    //     console.log(lf.getValue())
+
+    //     lf.setLoginValue('qwerty')
+    //     console.log(lf.getLoginValue())
+
+    //     // lf.setOpen(false)
+    //     console.log(lf.getOpen())
+
+
+//Password Verify
+       function PasswordCheck(parent, open){
+            const formBody = document.createElement('div')
+            const pass1 = document.createElement('input')
+            const pass2 = document.createElement('input')
+            const check = document.createElement('input')
+            const btn = document.createElement('button')
+
+            check.type = 'checkbox'
+            
+            btn.innerHTML = 'пароли совпадают'
+            parent.append(formBody)
+            formBody.append(pass2 , pass1 , check , btn)
+
+            check.onchange = () => {
+                this.setOpen(check.checked)
+            }
+
+            pass1.oninput = () => {
+                this.value = pass1.value;
+                btn.disabled = !validator();
+                if(typeof this.onchange === 'function'){
+                    this.onchange(this.value)
+                }
+            }
+
+            pass2.type = 'password'
+            pass2.style.display = !open ? 'inline' : 'none';
+            pass2.oninput = () => {
+                this.value2 = pass2.value
+                btn.disabled = !validator();
+            }
+
+            const validator = () => {
+                if (open === true) {
+                        return false;
+                    }
+                    if (this.value === this.value2 && pass1.value !== "" && this.value2) {
+                        console.log('correct password')
+                        return  true;
+                    }
+                    return false;
+                };
+
+            this.setValue = function(value){
+                this.value = value;
+                pass1.value = this.value
+                btn.disabled = !validator();
+            }
+
+            this.setPass2Value = (value) => {
+                this.pass2 = value
+                pass2.value = this.pass2
+                btn.disabled = !validator();
+            }
+
+            this.getValue = () => {
+                return this.value
+            }
+
+            this.getPass2Value = () => {
+                return this.pass2
+            }
+
+            this.setOpen = function (newOpen) {
+                open = newOpen
+                pass1.type = open ? 'text' : 'password'
+                pass2.style.display = !open ? "inline" : "none";
+                 btn.disabled = !validator();
+                check.checked = open
+                if(typeof this.onOpenChange === 'function') {
+                this.onOpenChange(open)
+                }
+            }
+
+            this.getOpen = function () {
+                return open 
+            }
+
+            this.setOpen(open)
+
+            btn.disabled = validator();
+        }
+
+        let pc = new PasswordCheck(document.body, false)
+        
+        pc.onOpenChange = open => console.log(open);
+
+        pc.setValue('')
+        // console.log(pc.getValue())
+
+        pc.setPass2Value('')
+        // console.log(pc.getPass2Value())
+
+        // pc.setOpen(false)
+        // console.log(pc.getOpen())
+  
+    </script>
+    
+</body>
+</html>
