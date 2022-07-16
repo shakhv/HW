@@ -111,5 +111,4 @@ volumeControl.onchange = () => {
 audio.volume = volumeControl.getValue();
 console.log(volumeControl.getValue());
 
-
-
+// console.log('asdasdasdasd')
