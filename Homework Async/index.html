@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     #table ,tr ,  td {
+        border: 3px solid black;
+        border-collapse: collapse;
+        font-size: 17px;
+        text-transform: uppercase;
+    }
+</style>
+<body>
+    <table id="table">
+
+    </table>
+    <script>
+
+
+        //fetch basic +++ fetch improved
+
+        fetch('https://swapi.dev/api/people/1/')
+			  .then(res => res.json())
+			  .then(luke => createTable(document.getElementById("table"), luke))
+
+        function createTable(dom , json ){
+            let table = document.getElementById('table')
+            table.style.border = '2px solid black'
+            console.log(json)
+                for( let [key , value] of Object.entries(json)){
+                    let trKey = document.createElement('tr')
+                    trKey.innerHTML = key
+                    table.append(trKey)
+                    let tdValue = document.createElement('td')
+                    trKey.append(tdValue)
+
+                    // tdValue.innerText = value
+                    if(typeof value === 'object'){
+                        for(val of value){
+                            let btn = document.createElement('button')
+                            btn.innerHTML = val
+                            btn.addEventListener('click' , function(){
+                                fetch(val).then(res => res.json()).then(luke => createTable(this.parentNode, luke))
+                            })
+                            tdValue.append(btn)
+                        }
+                    }else{
+                        let btn = document.createElement('button')
+                        btn.innerHTML = value
+                        tdValue.append(btn)
+                    }
+                    
+                }
+            }
+
+
+        //myfetch 
+
+        function myfetch(url){
+            return new Promise(function(resolve,reject){
+                let xhr = new XMLHttpRequest()
+                xhr.open('GET' , url , true)
+                xhr.send();
+                xhr.onreadystatechange = (e) => {
+                        if (xhr.readyState != 4) {
+                            return;
+                        }
+                        if (xhr.status === 200) {
+                            resolve(JSON.parse(xhr.responseText));
+
+                        }
+                        reject("request error");
+                    };
+                });
+            }
+
+        // myfetch('https://swapi.dev/api/people/1/')
+  		//   .then(luke => createTable(document.getElementById("myFetch") , luke))
+    
+
+        //race
+        const random = (min, max) => {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+		let delay = (ms) => setTimeout(() =>console.log("delay"), ms);
+		Promise.race([myfetch('https://swapi.dev/api/people/1/').then(luke => console.log(luke)), delay(random(10, 200))])
+
+
+
+
+    </script>
+
+    
+</body>
+</html>
