@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style> 
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: fantasy;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+input , #submitBtn{
+    width: 100%;
+    font-size: 2em;
+    height: 44px;
+    font-family: fantasy;
+    margin: 2px;
+}
+
+
+</style>
+<body>
+
+    <div class="wrapper">
+        <input type="text" id="nameInput" placeholder="name" />
+        <input type="text" id="messageInput" placeholder="message" />
+        <button id="submitBtn">Submit</button>
+        <div id="msgContent"></div>
+    </div>
+
+<script>
+
+    function jsonPost(url , data){
+        return new Promise((resolve , reject) => {
+            fetch(url , {
+                method: "POST",
+                body: JSON.stringify(data),
+            }).then(
+                (res) => {
+                    resolve(res.json());
+                },
+                (err) => {
+                    reject(new Error(err));
+                }
+            );
+        });
+    }
+    let nextMessageId = 0;
+
+    const viewMessage = (parent , elements) => {
+        for(let message of elements){
+            let messageContainer = document.createElement('div')
+            let messageText = document.createElement('div')
+            let messageNick = document.createElement('div')
+            let date = document.createElement('div')
+
+
+            date.innerHTML = new Date(message.timestamp).toLocaleTimeString()
+            messageContainer.append(messageNick , messageText , date);
+
+            messageNick.innerHTML = "nick :" + message.nick;
+
+            messageContainer.style.fontSize = '25px'
+            messageNick.style.color = 'red'
+            messageText.style.marginLeft = '50px'
+            date.style.textAlign = 'right'
+
+            messageNick.style.fontWeight = 'bold'
+            messageContainer.style.fontFamily = 'fantasy'
+
+            messageText.innerHTML = message.message;
+
+            messageContainer.classList.add('messageContainer')
+            messageNick.classList.add('messageNick')
+            messageText.classList.add('messageText')
+            date.classList.add("date");
+
+            parent.prepend(messageContainer)
+        }
+    };
+
+    submitBtn.addEventListener("click" , function sendMessage(){
+        let name = nameInput.value
+        let text = messageInput.value
+
+        if(name.length === null || messageInput.length === null){
+            nameInput.classList.add('error')
+            return;
+        } else {
+            nameInput.classList.remove('error')
+        }
+        sendAndCheck(name , text);
+    })
+
+
+    async function sendMessage(nick , message ){
+        let nextMessageId = await jsonPost("http://students.a-level.com.ua:10012" , {
+            func: "addMessage",
+            nick: nick,
+            message: message,
+        });
+        return nextMessageId;
+    }
+
+    async function getMessages(nextMessageId){
+        let res = await jsonPost("http://students.a-level.com.ua:10012" , {
+            func: "getMessages",
+            messageId : nextMessageId,
+        });
+       if(nextMessageId < res.nextMessageId){
+           viewMessage(msgContent , res.data);
+           nextMessageId = res.nextMessageId;
+       }
+       return nextMessageId;
+    }
+
+    async function sendAndCheck(nick , message) {
+        let nextMessageId = await sendMessage(nick , message);
+        getMessages(nextMessageId)
+    }
+
+    let messageContent = setInterval(() => {
+        jsonPost('http://students.a-level.com.ua:10012' , {
+            func : "getMessages",
+            messageId: nextMessageId ,
+        }).then((res) => {
+            if(nextMessageId !== res.nextMessageId){
+                viewMessage(msgContent , res.data);
+                nextMessageId = res.nextMessageId;
+            }
+        });
+
+    },100);
+
+</script>
+</body>
+</html>
