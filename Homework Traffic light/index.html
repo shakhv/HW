@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: flex;
+    }
+    .light {
+        width:105px; 
+        height: 405px;
+        padding: 10px;
+        border-radius: 15%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 150px;
+        background-color: black;
+        /* transform: rotate(-90deg); */
+    }
+    .light2{
+        width:105px; 
+        height: 405px;
+        padding: 10px;
+        margin: 30px;
+        border-radius: 15%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 150px;
+        background-color: black;
+    }
+    .green{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: green;
+        visibility: hidden;
+    }
+    .yellow{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: yellow;
+        visibility: hidden;
+
+    }
+    .red{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: red;
+        visibility: visible;
+    }
+    .knopka {
+        background-color: coral;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        text-transform: uppercase;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+    }
+</style>
+<body>
+
+    <div id="light" class="light">
+        <div class="red" id="red"></div>
+        <div class="yellow" id="yellow"></div>
+        <div class="green" id="green"></div>
+    </div>
+
+    <div id="light" class="light2">
+        <div class="red" id="red1"></div>
+        <div class="yellow" id="yellow1"></div>
+        <div class="green" id="green1"></div>
+        <div class="knopka" id="knopka">Натисніть</div>
+    </div>
+    
+    
+
+    <script>
+        const delay = ms => new Promise(ok => setTimeout(() => ok(ms), ms))
+
+        async function trafficLight(dom){
+            dom = document.getElementById('light')
+            let green = document.getElementById('green')
+            let red = document.getElementById('red')
+            let yellow = document.getElementById('yellow')
+
+            while (true){
+
+                green.style.visibility = 'visible'
+                red.style.visibility = 'hidden'
+                await delay(2000)
+
+                yellow.style.visibility = 'visible'
+                green.style.visibility = 'hidden'
+                await delay(2000)
+                
+                red.style.visibility = 'visible'
+                green.style.visibility = 'hidden'
+                yellow.style.visibility = 'hidden'
+                await delay(2000)
+            }
+        }
+
+        trafficLight();
+
+
+         //PedestrianTrafficLight
+        async function pedestrianTrafficLight(dom){
+            dom = document.getElementById('light')
+            let green = document.getElementById('green1')
+            let red = document.getElementById('red1')
+            let yellow = document.getElementById('yellow1')
+
+            let timerRed = setTimeout(() => {
+                red.style.visibility = 'visible' 
+            }, 500) 
+            let timerYellow = setTimeout(() => {
+                red.style.visibility = 'hidden'
+                yellow.style.visibility = 'visible' 
+            }, 1500) 
+            let timerGreen = setTimeout(() => {
+                yellow.style.visibility = 'hidden'
+                green.style.visibility = 'visible' 
+            }, 2500) 
+
+
+            setTimeout(() => { clearInterval(timerRed); red.style.visibility = 'visible' }, 5050);
+            setTimeout(() => { clearInterval(timerYellow); yellow.style.visibility = 'hidden'}, 5000);
+            setTimeout(() => { clearInterval(timerGreen);green.style.visibility = 'hidden' }, 5000);
+        }
+
+
+
+        //domEventPromise
+        function domEventPromise(element , eventName){
+            return new Promise((resolve , reject) => {
+                element.addEventListener(eventName , (e) => {
+                    resolve(e);
+                    console.log('event click happens')
+                    pedestrianTrafficLight(e)        
+                })
+            })
+        }
+        domEventPromise(knopka, 'click')
+
+            
+
+        // speedtest
+        async function speedtest(getPromise, count, parallel = 1) {
+                let duration = 0;
+
+                for (let i = 0; i < count; i++) {
+                    let allPromises = [];
+                    let start = performance.now();
+                    for (let index = 1; index <= parallel; index++) {
+                        allPromises[allPromises.length] = getPromise();
+                    }
+
+                    await Promise.all(allPromises);
+                    let end = performance.now();
+                    duration += Math.ceil(end - start);
+                }
+
+                let querySpeed = +(count / duration).toFixed(5)
+                let queryDuration = Math.ceil((duration / parallel) - 3)
+                let parallelSpeed = +((count * parallel) / duration).toFixed(2)
+                let parallelDuration = Math.ceil(duration / (count * parallel) - 1)
+
+                return {
+                    duration,
+                    querySpeed,
+                    queryDuration,
+                    parallelSpeed,
+                    parallelDuration,
+                };
+            }
+
+ speedtest(() => delay(1000), 10, 10).then((result) => console.log(result));
+// {duration: 10000, 
+// querySpeed: 0.001, //1 тысячная запроса за миллисекунду
+// queryDuration: 1000, //1000 миллисекунд на один реальный запрос в среднем 
+// parallelSpeed: 0.01  // 100 запросов за 10000 миллисекунд
+// parallelDuration: 100 // 100 запросов за 10000 миллисекунд
+speedtest(() => fetch("http://swapi.dev/api/people/1").then((res) => res.json()), 10, 5).then((result) =>
+                console.log(result)
+            );
+        
+
+
+        
+
+    </script>
+    
+</body>
+</html>
