@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph</title>
+</head>
+<body>
+
+    <script>
+
+
+    function gql(url, query, variables){
+            return new Promise((resolve, reject) => {
+                const myFetch = fetch(url, {
+                            method: 'POST', 
+                            body: JSON.stringify({query, variables}),
+                            headers: {
+                                    'Content-Type': 'application/json'
+                            }
+                    })
+                resolve(myFetch.then(res => console.log(res.json())))					
+             
+            })
+		}
+
+        async function register(login,password){
+                gql("http://shop-roles.node.ed.asmer.org.ua/graphql", `mutation register($login:String, $password:String){UserUpsert(user:{login:$login,password:$password}){_id login createdAt}}` , 
+                {login: login, password:password})
+        }
+
+        async function login(login, password){
+				gql("http://shop-roles.node.ed.asmer.org.ua/graphql", `query login($login:String,$password:String){login(login:$login,password:$password)}`, 
+                {login: login, password:password})
+			}
+
+        async function catByID(_id){
+				gql("http://shop-roles.node.ed.asmer.org.ua/graphql", `query catFindOne($id:String){CategoryFindOne(query:$id){_id, createdAt, name, goods {_id createdAt name description price},image {_id createdAt text url originalFileName}}}`, 
+                {id: JSON.stringify([{_id}])})
+			}
+
+        async function goodById(_id){
+                gql("http://shop-roles.node.ed.asmer.org.ua/graphql", `query GoodFindOne($id:String){GoodFindOne(query:$id){_id, createdAt, name images {_id createdAt text url originalFileName}}}` ,
+                {id: JSON.stringify([{_id}])})
+        }
+
+
+        const delay = ms => new Promise(ok => setTimeout(() => ok(ms), ms))
+        async function task(){
+                register('qwerqq1' , 'qwerty1')
+                await delay(2000)
+                login('qwerqq1' , 'qwerty1')
+                await delay(2000)
+			    catByID("6262ca19bf8b206433f5b3d0")
+                await delay(2000)
+                goodById("62c9472cb74e1f5f2ec1a0d1")
+                await delay(2000)
+        }
+
+        task();
+            
+
+    </script>
+    
+</body>
+</html>
